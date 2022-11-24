@@ -31,6 +31,7 @@ then
 echo "$n is a magic number";
 else
 echo "$n is not a magic number";
+fi
 
 
 

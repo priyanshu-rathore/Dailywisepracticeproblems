@@ -1,27 +1,25 @@
 #!/bin/bash/
 
-head=1;
-tail=1;
-
-
-
-
-while [ "$head" -eq 12 ] || [ "$tail" -eq 12 ];
+heads=1;
+tails=1;
+while [[ $heads != 11 && $tails != 11 ]]
 do
-coin=$((1+RANDOM%2))
-if [ $coin -eq 1 ]
-then
-(($head++))
-else
-(($tail++))
-fi
+        random=$(( $RANDOM%2 ))
+        if [ $random == 1 ]
+        then
+                echo "Heads "
+                heads=$(($heads + 1))
+
+        else
+                echo "Tails "
+                tails=$(($tails + 1))
+
+        fi
 done
 
-if [ $head -eq 12 ]
+if [ $heads -eq 11 ]
 then
-echo "HEADS WINS"
-elif [ $tail -eq 12 ]
-then
-echo "TAILS WINS"
+echo "Head win"
+else
+echo "Tails win"
 fi
-

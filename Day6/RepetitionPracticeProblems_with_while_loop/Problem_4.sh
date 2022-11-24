@@ -1,22 +1,28 @@
 #!/bin/bash/
 
-g=100
-
-while [ $g -eq 200 ] || [ $g -eq 0 ]
-do
-bet=$(($RANDOM%2));
-if [ $bet -eq 1 ]
+read -p "Enter amount to start : " st
+if [[ $st -gt "100" && $st -lt "200" ]]
 then
-((g++))
+	won=0
+	loss=0
+	while(( $st > 0 && $st <=200 ))
+	do
+		random=$(( $RANDOM%2 ))
+	case $random in
+	1)
+		st=$(($st + 1 ))
+		echo -n " $st"
+		won=$(($won + 1 ))
+		;;
+	0)
+		st=$(($st - 1 ))
+		echo -n " $st"
+		loss=$(($loss + 1 ))
+		;;
+	esac
+	done
+		echo " no of times Won = "$won
+		echo "no of time Loss = " $loss
 else
-((g--))
-fi
-done
-
-if [ $g -eq 200 ]
-then
-echo "Gambler won he has 200RS"
-elif [ $g -eq 0 ]
-then
-echo "Gambler lost he doesn't own any money "
+		echo "Enter amount in range between 100 - 200 "
 fi
